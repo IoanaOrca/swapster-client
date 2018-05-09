@@ -1,1 +1,185 @@
-/* You can add global styles to this file, and also import other style files */
+/* colors #5DBCD2 || #7BCAD1,	#F5907C, 	#FAFBED, 	#929292
+/* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+/* *{
+  border: 1px solid #F5907C;
+} */
+
+/* ---- typography ---- */
+
+body {
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 147%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+  line-height: 1.25em;
+  margin:0;
+}
+
+h3 {
+  text-align: center;
+  font-size: 1.375em;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 300;
+  line-height: 1.13636364em;
+  margin:0;
+}
+
+/* h4 {
+  font-size: 	1.125em;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+  line-height: 1.11111111em;
+  margin:0;
+} */
+p {
+  margin: 0;
+  font-size: 1em;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 300;
+  line-height: 1.25em;
+}
+
+a {
+  cursor: pointer;
+  display:inline-block;
+  color:	#F5907C;
+  background-color:white;
+  padding:5px 10px;
+  text-decoration:none;
+  border-radius:5px;
+  transition: background 0.2s, border-color 0.2s;
+  margin:0 5px;
+  text-align: center;
+  border: 1px solid #F5907C;
+  font-size:14px;
+}
+
+a:hover {
+  color:white;
+  background-color: #F5907C;
+}
+
+button {
+    outline: none;
+}
+
+ ul {
+   list-style-type: none;
+   padding-left: 0;
+ }
+
+@media (min-width: 768px) {
+  h1{
+    font-size:2.5em;
+    line-height:1.125em;
+  }
+
+  h3 {
+    font-size:1.5em;
+    line-height:1.25em;
+  }
+  p{
+    font-size:1em;
+    line-height: 1.375em;
+  }
+}
+
+@media (min-width: 1200px) {
+  
+  h1{
+    font-size:3em;
+    line-height:1.05em;
+  }
+
+  h3 {
+    font-size:1.75em;
+    line-height:1.25em;
+  }
+  p{
+    font-size:1em;
+    line-height: 1.375em;
+  }
+}
+
+.container {
+  margin: 0 20px;
+}
+@media (min-width: 768px) {
+  .container {
+    margin: 0 10%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
+/* forms */
+
+form {
+  margin: 30px auto;
+  width: 380px;
+}
+
+form label {
+  color: #666;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+form input,
+form button {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  padding: 4px;
+  width: 100%;
+}
+
+form button {
+  background: #43a3e6;
+  border: 1px solid #43a3e6;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s ease background;
+  width: 100%;
+}
+
+form button:hover {
+  background: #fff;
+  color: #43a3e6;
+  transition: .3s ease background;
+}

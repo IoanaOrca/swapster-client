@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>
+    Signup
+  </h1>
+  <app-auth-form [label]="'Signup'" [processing]="processing" (submitdata)="handleSubmit($event)"></app-auth-form>
+  <div class="field" *ngIf="error">
+    <p class="validation">{{error}}</p>
+  </div>
+</div>

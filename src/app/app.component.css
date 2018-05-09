@@ -1,0 +1,56 @@
+
+#site-header {
+  padding: 10px 0;
+  color:	#929292;
+  background: white;
+}
+
+nav{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  min-width: 100px;
+}
+
+nav .menu{
+  display:flex;
+  justify-content: space-around;
+  padding-top:10px;
+  margin-bottom:10px;
+}
+
+#site-footer {
+  color: #929292;
+  padding: 10px 0;
+  background: white;
+  margin-bottom:40px;
+}
+
+#site-footer a{
+  display:inline;
+  color: #F5907C;
+  background-color: white;
+  border:white;
+}
+
+.personal-info{
+  display:flex;
+  justify-content: space-between;
+}
+
+.personal-links{
+  display:flex;
+  justify-content: flex-end;
+}
+
+#site-main {
+  min-height: calc(100vh - 100px);
+}
+
+.section {
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
