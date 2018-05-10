@@ -25,11 +25,11 @@ export class ItemService {
       .toPromise();
   }
 
-  create(movie):Promise<any> {
+  add(item):Promise<any> {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.post(`${this.baseUrl}/items`, movie, options)
+    return this.httpClient.post(`${this.baseUrl}/items`, item, options)
       .toPromise();
   }
 

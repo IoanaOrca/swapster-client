@@ -24,6 +24,7 @@ export class AuthService {
   }
 
   me(): Promise<any> {
+    console.log('meeee')
     const options = {
       withCredentials: true
     };
@@ -38,6 +39,7 @@ export class AuthService {
   }
 
   login(user: any): Promise<any> {
+    console.log(user, 'xxx')
     const options = {
       withCredentials: true
     };

@@ -1,19 +1,20 @@
-<nav id="site-header" class="container" [ngClass]="{'is-user': user, 'is-anon': anon}">
+<nav id="site-header" class="container" >
   <div class="logo">
       <i class="fas fa-sync fa-3x"></i>
   </div>
-  <div class="menu">
-      <!-- *ngIf="loading" -->
-      <!-- <span class="username text">loading...</span>
+  <div class="menu" [ngClass]="{'is-user': user, 'is-anon': anon}">
+    <div *ngIf="loading">
+      <span class="username text">Loading...</span>
     </div>
-    <div class="menu" *ngIf="!loading && !!user">
-      <a [routerLink]="['/profile']">{{user.username}}</a>
-      <a (click)="logout()">logout</a>
+    <div *ngIf="!loading && !!user">
+      <a [routerLink]="['/profile']"><i class="far fa-user fa-2x"></i></a>
+      <a (click)="logout()"><i class="fas fa-power-off fa-2x"></i></a>
     </div>
-    <div class="menu" *ngIf="!loading && anon"> -->
-      <a [routerLink]="['/login']">login</a>
-      <a [routerLink]="['/signup']">signup</a>
+    <div *ngIf="!loading && anon">
+      <a [routerLink]="['/login']">Login</a>
+      <a [routerLink]="['/signup']">Signup</a>
     </div>
+  </div>
 </nav>
 
 <div id="site-main">

@@ -1,4 +1,9 @@
-<h1>
-  Login
-</h1>
-<app-auth-form [label]="Login"></app-auth-form>
+<div class="container">
+    <h1>
+      Login
+    </h1>
+    <app-auth-form [label]="'Login'" [processing]="processing" (submitdata)="handleSubmit($event)"></app-auth-form>
+    <div class="field" *ngIf="error">
+      <p class="validation">{{error}}</p>
+    </div>
+  </div>

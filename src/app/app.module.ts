@@ -9,15 +9,25 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { ItemCreatePageComponent } from './pages/item-create-page/item-create-page.component';
+
 
 import { AuthFormComponent} from './components/auth-form/auth-form.component';
 import { AuthService } from './services/auth.service';
 import { ItemService } from './services/items.service';
+import { ItemFormComponent } from './components/item-form/item-form.component';
+import { ItemCardComponent } from './components/item-card/item-card.component';
+
+import { InitAuthGuardService } from './guards/init-auth-guard.service';
+import { RequireAnonGuardService } from './guards/require-anon-guard.service';
+import { RequireUserGuardService } from './guards/require-user-guard.service';
+
 
 const routes: Routes = [
-  { path: '',  component: HomePageComponent},
-  { path: 'login', component: LoginPageComponent},
-  { path: 'signup', component: SignupPageComponent}
+  { path: '',  component: HomePageComponent, canActivate: [InitAuthGuardService]},
+  { path: 'items/add', component: ItemCreatePageComponent,  canActivate: [RequireUserGuardService]},
+  { path: 'login', component: LoginPageComponent, canActivate: [RequireAnonGuardService]},
+  { path: 'signup', component: SignupPageComponent,  canActivate: [RequireAnonGuardService]}
 ];
 
 @NgModule({
@@ -26,7 +36,10 @@ const routes: Routes = [
     HomePageComponent,
     LoginPageComponent,
     SignupPageComponent,
-    AuthFormComponent
+    AuthFormComponent,
+    ItemFormComponent,
+    ItemCreatePageComponent,
+    ItemCardComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +49,10 @@ const routes: Routes = [
   ],
   providers: [
     AuthService,
-    ItemService
+    ItemService,
+    InitAuthGuardService,
+    RequireAnonGuardService,
+    RequireUserGuardService
   ],
   bootstrap: [AppComponent]
 })

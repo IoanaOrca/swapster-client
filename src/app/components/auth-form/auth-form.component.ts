@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
 
 export class AuthFormComponent implements OnInit {
 
-  @Input() label : String ;
+  @Input() label: String;
   @Input() processing: Boolean;
 
   @Output() submitdata: EventEmitter<any> = new EventEmitter;

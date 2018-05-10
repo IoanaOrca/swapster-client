@@ -5,3 +5,9 @@
     <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h3>
   </div>
 </div>
+<ul *ngFor="let item of items">
+    <li>
+      <app-item-card [item]="item"></app-item-card>
+      <a [routerLink]="['/itemss',items._id]">Detail</a>
+    </li>
+  </ul>

@@ -1,0 +1,34 @@
+<form class="container" (submit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
+
+    <div class="field" [ngClass]="{'has-error': feedbackEnabled && titleField.errors}">
+   
+      <input type="text" name="title" [(ngModel)]="item.title" #titleField="ngModel" required  [disabled]="processing" placeholder="Title"/>
+      <div *ngIf="feedbackEnabled && titleField.errors">
+        <p *ngIf="titleField.errors.required" class="validation">Title</p>
+      </div>
+    </div>
+  
+    <div class="field" [ngClass]="{'has-error': feedbackEnabled && priceField.errors}">
+      
+        <input type="number" name="price" [(ngModel)]="item.price" #priceField="ngModel" required  [disabled]="processing" placeholder="Price"/>
+        <div *ngIf="feedbackEnabled && priceField.errors">
+          <p *ngIf="priceField.errors.required" class="validation">Price</p>
+        </div>
+      </div>
+
+      <div class="field" [ngClass]="{'has-error': feedbackEnabled && descriptionField.errors}">
+        
+          <textarea type="text" rows="4" cols="50" name="description" [(ngModel)]="item.description" #descriptionField="ngModel" required  [disabled]="processing" placeholder="Description">
+          <div *ngIf="feedbackEnabled && descriptionField.errors">
+            <p *ngIf="descriptionField.errors.required" class="validation">Description</p>
+          </div>
+        </textarea>
+        </div>
+
+    <div class="field submit">
+      <button type="submit" [disabled]="processing">Submit</button>
+      <div *ngIf="feedbackEnabled && form.invalid">
+        <p class="validation">there are errors in the form, please review the fields</p>
+      </div>
+    </div>
+  </form>

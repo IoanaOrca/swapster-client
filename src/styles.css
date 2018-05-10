@@ -146,7 +146,7 @@ form {
   width: 380px;
 }
 
-form label {
+form label{
   color: #666;
   display: inline-block;
   margin-bottom: 10px;
@@ -155,17 +155,20 @@ form label {
 }
 
 form input,
+form textarea,
 form button {
   box-sizing: border-box;
   font-size: 14px;
   outline: 0;
   padding: 4px;
   width: 100%;
+  padding-top:10px;
+  margin-bottom:20px;
 }
 
 form button {
-  background: #43a3e6;
-  border: 1px solid #43a3e6;
+  background: #F5907C;
+  border: 1px solid #F5907C;
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
@@ -180,6 +183,6 @@ form button {
 
 form button:hover {
   background: #fff;
-  color: #43a3e6;
+  color: #F5907C;
   transition: .3s ease background;
 }
