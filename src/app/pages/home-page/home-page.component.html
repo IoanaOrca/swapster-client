@@ -5,9 +5,16 @@
     <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h3>
   </div>
 </div>
-<ul *ngFor="let item of items">
-    <li>
+<div class="search container">
+    <input type="search" class="input-search" name="title" required placeholder="What do you need?">
+    <button (click)="handleFilterClick()" class="btn-search"><i class="fas fa-search fa-2x"></i></button>
+</div>
+<div class="items container">
+    
+<ul >
+    <li *ngFor="let item of items">
       <app-item-card [item]="item"></app-item-card>
-      <a [routerLink]="['/itemss',items._id]">Detail</a>
+      <a [routerLink]="['/items',item._id]">Detail</a>
     </li>
   </ul>
+</div>

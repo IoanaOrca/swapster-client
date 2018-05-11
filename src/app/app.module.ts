@@ -21,11 +21,15 @@ import { ItemCardComponent } from './components/item-card/item-card.component';
 import { InitAuthGuardService } from './guards/init-auth-guard.service';
 import { RequireAnonGuardService } from './guards/require-anon-guard.service';
 import { RequireUserGuardService } from './guards/require-user-guard.service';
+import { ItemDetailPageComponent } from './pages/item-detail-page/item-detail-page.component';
+import { UserReviewPageComponent } from './pages/user-review-page/user-review-page.component';
+import { ItemEditPageComponent } from './pages/item-edit-page/item-edit-page.component';
 
 
 const routes: Routes = [
   { path: '',  component: HomePageComponent, canActivate: [InitAuthGuardService]},
   { path: 'items/add', component: ItemCreatePageComponent,  canActivate: [RequireUserGuardService]},
+  { path: 'items/:id', component: ItemDetailPageComponent, canActivate: [RequireUserGuardService]},
   { path: 'login', component: LoginPageComponent, canActivate: [RequireAnonGuardService]},
   { path: 'signup', component: SignupPageComponent,  canActivate: [RequireAnonGuardService]}
 ];
@@ -39,7 +43,10 @@ const routes: Routes = [
     AuthFormComponent,
     ItemFormComponent,
     ItemCreatePageComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    ItemDetailPageComponent,
+    UserReviewPageComponent,
+    ItemEditPageComponent
   ],
   imports: [
     BrowserModule,

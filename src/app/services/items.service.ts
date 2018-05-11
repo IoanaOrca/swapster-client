@@ -48,4 +48,12 @@ export class ItemService {
     return this.httpClient.delete(`${this.baseUrl}/items/${id}`, options)
       .toPromise();
   }
+
+  requestItem(id){
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.put(`${this.baseUrl}/items/${id}/apply`, null, options)
+      .toPromise()
+  }
 }

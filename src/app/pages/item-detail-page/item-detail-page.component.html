@@ -1,0 +1,31 @@
+<div class="container">
+  <ng-container *ngIf="!item && !notFound">
+    Loading...
+  </ng-container>
+
+  <!-- <app-not-found *ngIf="notFound"></app-not-found> -->
+  
+  <ng-container *ngIf="item">
+    <app-item-card [item]="item"></app-item-card>
+    <div *ngIf="item.owner === currentUser._id">
+      <a [routerLink]="['/items',item._id, 'edit']">Update Item</a>
+      <button class="btn" (click)="handleDeleteClick()">Delete Item</button>
+    </div>
+    <div *ngIf="item.owner !== currentUser._id">
+      <hr/>
+      <a [routerLink]="['/user',item.owner]">User</a>
+      <div *ngIf="!sold">
+        <button class="btn" (click)="handleRequestClick()">Book Item</button>
+        <div class="error" *ngIf="requestError">
+          <ng-container [ngSwitch]="requestError">
+            <p *ngSwitchCase="'not-found'">Theitemisnolongeravailable</p>
+            <p *ngSwitchDefault>Aneunexpectederrorocurredpleasetryagain</p>
+          </ng-container>
+        </div>
+      </div>
+      <div *ngIf="sold">
+        <a [routerLink]="['/user',user._id,'review']">Review</a>
+      </div>
+    </div>
+  </ng-container>
+</div>

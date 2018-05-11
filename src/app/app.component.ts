@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   loading = true;
   anon: boolean;
   user: any;
-
+  
   constructor(
     private authService: AuthService,
     private router: Router
@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
       this.user = user;
       this.anon = !user;
     });
+  
   }
 
   logout() {

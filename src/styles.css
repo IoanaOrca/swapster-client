@@ -81,7 +81,22 @@ a:hover {
   color:white;
   background-color: #F5907C;
 }
+button {
+  color:	#F5907C;
+  background-color:white;
+  padding:5px 10px;
+  border-radius:5px;
+  transition: background 0.2s, border-color 0.2s;
+  margin:0 5px;
+  text-align: center;
+  border: 1px solid #F5907C;
+  font-size:14px;
+}
 
+button:hover {
+  color:white;
+  background-color: #F5907C;
+}
 button {
     outline: none;
 }
@@ -185,4 +200,8 @@ form button:hover {
   background: #fff;
   color: #F5907C;
   transition: .3s ease background;
+}
+
+.error {
+  color:red;
 }
