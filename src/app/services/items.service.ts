@@ -9,11 +9,11 @@ export class ItemService {
 
   constructor(private httpClient: HttpClient) { }
 
-  listAll():Promise<any>{
+  listAll(terms?: String):Promise<any>{
     const options = {
       withCredentials: true
     };
-    return this.httpClient.get(`${this.baseUrl}/items`, options)
+    return this.httpClient.get(`${this.baseUrl}/items?terms=${terms}`, options)
       .toPromise();
   }
 

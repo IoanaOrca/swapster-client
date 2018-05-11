@@ -1,0 +1,14 @@
+<ng-container *ngIf="!user">
+    Loading...
+  </ng-container>
+  
+  
+  <ng-container *ngIf="user">
+  <h3>{{user.username}}</h3>
+  </ng-container>
+  <ul *ngFor="let item of items">
+      <li>
+        <p>{{item.title}}-{{item.title}}</p>
+        <p>{{item.description}}</p>
+      </li>
+    </ul>

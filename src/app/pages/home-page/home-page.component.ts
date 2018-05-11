@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/items.service';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
@@ -13,11 +14,19 @@ export class HomePageComponent implements OnInit {
 
   constructor(private itemService: ItemService) { }
 
-  ngOnInit() {
-    this.itemService.listAll()
+  private search(terms?: String) {
+    this.itemService.listAll(terms)
     .then((data) => {
       this.items=data;
     })
+  }
+
+  ngOnInit() {
+    this.search('cycle');
+  }
+
+  handleFilterClick(){
+    //this.search(this.terms);
   }
 
 }
