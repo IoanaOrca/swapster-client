@@ -13,6 +13,7 @@ export class ItemCreatePageComponent implements OnInit {
   feedbackEnabled: boolean;
   error : boolean;
   processing : boolean;
+  item: any;
 
   constructor(private itemService: ItemService, private router: Router) { }
 
@@ -22,7 +23,7 @@ export class ItemCreatePageComponent implements OnInit {
   handleSubmitForm(item) {
     this.itemService.add(item)
         .then((result) => {
-         this.router.navigate(['/']);
+        this.router.navigate(['/items',this.item.owner]);
         })
         .catch((err) => {
           this.error = err.error.code;

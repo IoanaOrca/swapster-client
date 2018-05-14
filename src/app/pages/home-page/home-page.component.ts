@@ -11,8 +11,10 @@ import { UserService } from '../../services/user.service';
 export class HomePageComponent implements OnInit {
 
   items: Array<any>;
-
-  constructor(private itemService: ItemService) { }
+  terms:String;
+  constructor(private itemService: ItemService) {
+    this.terms="";
+   }
 
   private search(terms?: String) {
     this.itemService.listAll(terms)
@@ -22,11 +24,11 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.search('cycle');
+    this.search(this.terms);
   }
 
   handleFilterClick(){
-    //this.search(this.terms);
+    this.search(this.terms);
   }
 
 }

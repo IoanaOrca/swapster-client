@@ -1,3 +1,4 @@
-<p>
-  user-review-page works!
-</p>
+<app-user-review-form [feedbackEnabled]="feedbackEnabled" [processing]="processing" [error]="error" (submitdata)="handleSubmitForm($event)"></app-user-review-form>
+<div class="field" *ngIf="error">
+  <p class="validation">{{error}}</p>
+</div>

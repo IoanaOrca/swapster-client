@@ -8,23 +8,23 @@
   <ng-container *ngIf="item">
     <app-item-card [item]="item"></app-item-card>
     <div *ngIf="item.owner === currentUser._id">
-      <a [routerLink]="['/items',item._id, 'edit']">Update Item</a>
-      <button class="btn" (click)="handleDeleteClick()">Delete Item</button>
+      <a [routerLink]="['/items',item._id,'edit']"><i class="far fa-edit"></i></a>
+      <button class="btn" (click)="handleDeleteClick()"><i class="far fa-trash-alt"></i></button>
     </div>
     <div *ngIf="item.owner !== currentUser._id">
       <hr/>
-      <a [routerLink]="['/user',item.owner]">User</a>
-      <div *ngIf="!sold">
+      <a [routerLink]="['/profile',item.owner]">Owner</a>
+      <div *ngIf="item.sold">
         <button class="btn" (click)="handleRequestClick()">Book Item</button>
         <div class="error" *ngIf="requestError">
           <ng-container [ngSwitch]="requestError">
-            <p *ngSwitchCase="'not-found'">Theitemisnolongeravailable</p>
-            <p *ngSwitchDefault>Aneunexpectederrorocurredpleasetryagain</p>
+            <p *ngSwitchCase="'not-found'">The item is no longer available</p>
+            <p *ngSwitchDefault>An unexpected error ocurred please try again</p>
           </ng-container>
         </div>
       </div>
-      <div *ngIf="sold">
-        <a [routerLink]="['/user',user._id,'review']">Review</a>
+      <div *ngIf="!item.sold">
+        <a [routerLink]="['/profile',item.owner,'reviews']">Review</a>
       </div>
     </div>
   </ng-container>

@@ -3,12 +3,17 @@
   </ng-container>
   
   
-  <ng-container *ngIf="user">
+  <ng-container *ngIf="user" >
   <h3>{{user.username}}</h3>
   </ng-container>
-  <ul *ngFor="let item of items">
+  <ul *ngFor="let item of items" class="container">
       <li>
-        <p>{{item.title}}-{{item.title}}</p>
-        <p>{{item.description}}</p>
+          <a [routerLink]="['/items',item._id]">
+            <app-item-card [item]="item"></app-item-card>
+          </a>
       </li>
-    </ul>
+  </ul>
+  <div *ngIf="user._id === currentUser._id">
+  <a [routerLink]="['/items/add']">Add Item</a>
+  <a [routerLink]="['/profile/requests']">Requests</a>
+  </div>

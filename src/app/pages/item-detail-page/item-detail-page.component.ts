@@ -37,7 +37,6 @@ export class ItemDetailPageComponent implements OnInit {
         // @todo if(err.error.code === 'not-found') { this.notFound = true; }
       })
     });
-
   }
 
   handleDeleteClick(){

@@ -33,11 +33,11 @@ export class ItemService {
       .toPromise();
   }
 
-  update(movie):Promise<any> {
+  update(item):Promise<any> {
     const options = {
       withCredentials: true
     };
-    return this.httpClient.put(`${this.baseUrl}/items/${movie._id}`, movie, options)
+    return this.httpClient.put(`${this.baseUrl}/items/${item._id}`, item, options)
       .toPromise();
   }
 

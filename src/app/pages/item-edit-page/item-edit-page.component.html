@@ -1,3 +1,4 @@
-<p>
-  item-edit-page works!
-</p>
+<app-item-form *ngIf="item" [item]="item" [feedbackEnabled]="feedbackEnabled" [processing]="processing" [error]="error" (submitdata)="handleSubmitForm($event)"></app-item-form>
+<div class="field" *ngIf="error">
+    <p class="validation">{{error}}</p>
+  </div>
