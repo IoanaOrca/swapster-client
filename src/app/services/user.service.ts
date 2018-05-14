@@ -17,12 +17,20 @@ export class UserService {
       .toPromise();
   }
 
-  reviews(id):Promise<any>{
+  reviews(review,id):Promise<any>{
     const options = {
       withCredentials: true
     };
-    return this.httpClient.post(`${this.baseUrl}/users/${id}/reviews`, options)
+    return this.httpClient.post(`${this.baseUrl}/users/${id}/reviews`,review, options)
       .toPromise();
+  }
+
+  getItems(id){
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.baseUrl}/users/${id}/requests`, options)
+      .toPromise()
   }
 }
 

@@ -56,4 +56,13 @@ export class ItemService {
     return this.httpClient.put(`${this.baseUrl}/items/${id}/apply`, null, options)
       .toPromise()
   }
+
+  sellItem(id){
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.put(`${this.baseUrl}/items/${id}/sell`, options)
+      .toPromise()
+  }
+
 }

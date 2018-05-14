@@ -19,15 +19,16 @@ import { AuthService } from './services/auth.service';
 import { ItemService } from './services/items.service';
 import { UserService } from './services/user.service';
 
-
 import { ItemFormComponent } from './components/item-form/item-form.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
+import { UserReviewFormComponent } from './components/user-review-form/user-review-form.component';
+import { UserRequestsComponent } from './pages/user-requests/user-requests.component';
+
 import { AppComponent } from './app.component';
 
 import { InitAuthGuardService } from './guards/init-auth-guard.service';
 import { RequireAnonGuardService } from './guards/require-anon-guard.service';
 import { RequireUserGuardService } from './guards/require-user-guard.service';
-import { UserRequestsComponent } from './pages/user-requests/user-requests.component';
 
 
 
@@ -38,7 +39,7 @@ const routes: Routes = [
   { path: 'items/:id/edit', component: ItemEditPageComponent , canActivate: [RequireUserGuardService]},
   { path: 'profile/:id', component: ProfilePageComponent, canActivate: [RequireUserGuardService]},
   { path: 'profile/:id/reviews', component: UserReviewPageComponent , canActivate: [RequireUserGuardService]},
-  { path: 'profile/requests', component: UserRequestsComponent , canActivate: [RequireUserGuardService]},
+  { path: 'profile/:id/requests', component: UserRequestsComponent , canActivate: [RequireUserGuardService]},
   { path: 'login', component: LoginPageComponent, canActivate: [RequireAnonGuardService]},
   { path: 'signup', component: SignupPageComponent,  canActivate: [RequireAnonGuardService]}
 ];
@@ -54,10 +55,11 @@ const routes: Routes = [
     ItemCreatePageComponent,
     ItemCardComponent,
     ItemDetailPageComponent,
-    UserReviewPageComponent,
     ItemEditPageComponent,
     ProfilePageComponent,
     UserRequestsComponent,
+    UserReviewPageComponent,
+    UserReviewFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { PARAMETERS } from '@angular/core/src/util/decorators';
 
 @Component({
   selector: 'app-user-review-page',
@@ -13,24 +14,29 @@ export class UserReviewPageComponent implements OnInit {
   feedbackEnabled: boolean;
   error : boolean;
   processing : boolean;
-  user: any;
+  userId: any;
 
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, 
+    private router: Router,
+    private activatedRoute: ActivatedRoute, ) { }
 
   ngOnInit() {
   }
 
   handleSubmitForm(review) {
-    this.userService.reviews(review)
+    this.activatedRoute.params.subscribe((params) => {
+      this.userId = params.id;
+      this.userService.reviews(review,this.userId)
         .then((result) => {
-        this.router.navigate(['/profile',this.user._id]);
+        this.router.navigate(['/profile',result._id]);
         })
         .catch((err) => {
           this.error = err.error.code;
           this.processing = false;
           this.feedbackEnabled = false;
         });
+    });
   }
 }
 

@@ -14,7 +14,7 @@
     <div *ngIf="item.owner !== currentUser._id">
       <hr/>
       <a [routerLink]="['/profile',item.owner]">Owner</a>
-      <div *ngIf="item.sold">
+      <div *ngIf="!item.sold">
         <button class="btn" (click)="handleRequestClick()">Book Item</button>
         <div class="error" *ngIf="requestError">
           <ng-container [ngSwitch]="requestError">
@@ -23,7 +23,7 @@
           </ng-container>
         </div>
       </div>
-      <div *ngIf="!item.sold">
+      <div *ngIf="item.sold">
         <a [routerLink]="['/profile',item.owner,'reviews']">Review</a>
       </div>
     </div>

@@ -23,7 +23,7 @@ export class ItemCreatePageComponent implements OnInit {
   handleSubmitForm(item) {
     this.itemService.add(item)
         .then((result) => {
-        this.router.navigate(['/items',this.item.owner]);
+        this.router.navigate(['/profile',result.owner]);
         })
         .catch((err) => {
           this.error = err.error.code;
