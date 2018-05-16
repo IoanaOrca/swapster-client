@@ -6,8 +6,8 @@
     <div *ngIf="loading">
       <span class="username text">Loading...</span>
     </div>
-    <div *ngIf="!loading && !!user">
-      <p>{{user.username}}</p>
+    <div *ngIf="!loading && !!user" class="menu">
+      <h3>{{user.username}}</h3>
       <a [routerLink]="['/profile',user._id]"><i class="fas fa-cog fa-2x"></i></a>
       <a (click)="logout()"><i class="fas fa-power-off fa-2x"></i></a>
     </div>

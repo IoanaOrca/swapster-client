@@ -1,0 +1,11 @@
+.item-container{
+  display: flex;
+}
+
+.item-image {
+  flex:1 0 auto;
+}
+
+.item-text{
+  flex:1 0 auto;
+}

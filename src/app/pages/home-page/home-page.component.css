@@ -108,3 +108,13 @@
   width:230px;
   max-height:300px;
 }
+
+.items a{
+  border:none;
+  color:#929292;
+}
+
+.items a:hover{
+  background-color: #fff;
+  color: #929292;
+}

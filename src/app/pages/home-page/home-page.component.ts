@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/items.service';
 import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -9,10 +10,11 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
+  currentUser:Object;
   items: Array<any>;
   terms:String;
-  constructor(private itemService: ItemService) {
+  constructor(private itemService: ItemService,
+  private authService: AuthService) {
     this.terms="";
    }
 
@@ -24,6 +26,7 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentUser=this.authService.getUser()
     this.search(this.terms);
   }
 

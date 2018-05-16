@@ -1,4 +1,5 @@
-<form class="container" (submit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
+<div class="create-review">
+  <form class="container" (submit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
     <h3>Leave a review</h3>
     <div class="field" [ngClass]="{'has-error': feedbackEnabled && ratingField.errors}">
 
@@ -25,5 +26,7 @@
         <p class="validation">there are errors in the form, please review the fields</p>
       </div>
     </div>
-    
+
   </form>
+
+</div>  

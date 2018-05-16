@@ -9,13 +9,24 @@
     <input [(ngModel)]="terms"type="search" class="input-search" name="title" required placeholder="What do you need?">
     <button (click)="handleFilterClick()" class="btn-search"><i class="fas fa-search fa-2x"></i></button>
 </div>
+
 <div class="items container">
     
-<ul >
+  <ul>
     <li *ngFor="let item of items">
-      <a [routerLink]="['/items',item._id]">
-        <app-item-card [item]="item"></app-item-card>
-      </a>
+      <!-- if you are logged in-->
+      <div *ngIf="currentUser">
+        <a [routerLink]="['/items',item._id]">
+          <app-item-card [item]="item"></app-item-card>
+        </a>
+      </div>
+      <!-- if you are not logged in-->
+      <div *ngIf="!currentUser">
+          <a [routerLink]="['/login']">
+            <app-item-card [item]="item"></app-item-card>
+          </a>
+        </div>
     </li>
   </ul>
+  
 </div>

@@ -2,8 +2,6 @@
   <ng-container *ngIf="!item && !notFound">
     Loading...
   </ng-container>
-
-  <!-- <app-not-found *ngIf="notFound"></app-not-found> -->
   
   <ng-container *ngIf="item">
     <app-item-card [item]="item"></app-item-card>

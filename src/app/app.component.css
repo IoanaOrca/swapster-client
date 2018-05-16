@@ -21,6 +21,10 @@ nav .menu{
   padding-top:10px;
   margin-bottom:10px;
 }
+.menu h3{
+  margin-right:20px;
+  padding-top:10px;
+}
 
 #site-footer {
   color: #929292;
@@ -54,3 +58,5 @@ nav .menu{
   margin-bottom: 20px;
   padding-top: 20px;
 }
+
+
