@@ -1,29 +1,46 @@
-<div class="container">
-  <ng-container *ngIf="!item && !notFound">
-    Loading...
-  </ng-container>
-  
-  <ng-container *ngIf="item">
-    <app-item-card [item]="item"></app-item-card>
-    <div *ngIf="item.owner === currentUser._id">
-      <a [routerLink]="['/items',item._id,'edit']"><i class="far fa-edit"></i></a>
-      <button class="btn" (click)="handleDeleteClick()"><i class="far fa-trash-alt"></i></button>
-    </div>
-    <div *ngIf="item.owner !== currentUser._id">
-      <hr/>
-      <a [routerLink]="['/profile',item.owner]">Owner</a>
-      <div *ngIf="!item.sold">
-        <button class="btn" (click)="handleRequestClick()">Book Item</button>
-        <div class="error" *ngIf="requestError">
-          <ng-container [ngSwitch]="requestError">
-            <p *ngSwitchCase="'not-found'">The item is no longer available</p>
-            <p *ngSwitchDefault>An unexpected error ocurred please try again</p>
-          </ng-container>
+<div class="important-detail">
+  <div class="container">
+    <ng-container *ngIf="!item && !notFound">
+      Loading...
+    </ng-container>
+    
+    <ng-container *ngIf="item">
+      <!-- <app-item-card [item]="item"></app-item-card> -->
+      <div class="item-detail-page">
+          <img src={{item.image}} class="item-image">
+          <div class="item-text">
+            <h3>{{item.price}}€-{{item.title}}</h3>
+            <p>{{item.description}}</p>
+            <!-- if the owner of the item is the current user -->
+            <div *ngIf="item.owner === currentUser._id">
+                <hr/>
+              <a [routerLink]="['/items',item._id,'edit']"><i class="far fa-edit"></i></a>
+              <button class="btn" (click)="handleDeleteClick()"><i class="far fa-trash-alt"></i></button>
+            </div>
+            <div *ngIf="item.owner !== currentUser._id">
+                <hr/>
+                <a [routerLink]="['/profile',item.owner]" class="owner">Owner</a>
+              <!-- if the item is not sold -->
+                <div *ngIf="!item.sold">
+                  <button class="btn" (click)="handleRequestClick()">Book Item</button>
+                  <div class="error" *ngIf="requestError">
+                    <ng-container [ngSwitch]="requestError">
+                      <p *ngSwitchCase="'not-found'">The item is no longer available</p>
+                      <p *ngSwitchDefault>An unexpected error ocurred please try again</p>
+                    </ng-container>
+                  </div>
+                </div>
+                  <!-- if the item issold -->
+                <div *ngIf="item.sold">
+                    <a [routerLink]="['/profile',item.owner,'reviews']">Review</a>
+                </div>
+              </div>
         </div>
-      </div>
-      <div *ngIf="item.sold">
-        <a [routerLink]="['/profile',item.owner,'reviews']">Review</a>
-      </div>
-    </div>
-  </ng-container>
+          </div>
+            <!-- if the owner of the item is not the current user -->
+         
+      
+      
+    </ng-container>
+  </div>
 </div>

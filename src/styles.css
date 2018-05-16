@@ -262,3 +262,37 @@ form button:hover {
   background-color: #7BCAD1;
   height: 80vh;
 }
+
+/* image detail */
+
+.item-detail-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.item-detail-page img{
+  max-width:100%;
+  border-radius: 5px;
+}
+
+.item-detail-page .item-image{
+  width:40%;
+}
+
+.item-detail-page .item-text{
+ width:50%;
+}
+
+.owner{
+  float:left
+}
+
+.item-detail-page a {
+  min-width:47%;
+  min-height:35px;
+}
+
+.item-detail-page button{
+  min-width:47%;
+  min-height:35px;
+}
