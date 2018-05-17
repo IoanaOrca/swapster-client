@@ -11,7 +11,9 @@ import { AuthService } from '../../services/auth.service';
 export class ProfilePageComponent implements OnInit {
   currentUser:Object;
   user:Object;
-  items:Array<Object>
+  items:Array<Object>;
+  itemsReceived:any;
+  itemsBooked:any;
   idUser: string;
   
   constructor(private userService: UserService
@@ -26,9 +28,15 @@ export class ProfilePageComponent implements OnInit {
       .then((data) => {
           this.user = data[0];
           this.items = data[1];
-      });
+          this.itemsReceived = data[2];
+          this.itemsBooked = data[3];
+      })
+      .catch((err) => {
+        console.log(err);
+       });
     });
-
+   }
   }
 
-}
+ 
+

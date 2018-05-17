@@ -10,11 +10,9 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ItemDetailPageComponent implements OnInit {
 
-  currentUser:Object;
-  item:Object;
+  currentUser:any;
+  item:any;
   idItem: string;
-
-  // notFound = false;
   requestError:string;
 
   constructor(
@@ -31,6 +29,10 @@ export class ItemDetailPageComponent implements OnInit {
       this.itemService.getOne(this.idItem)
       .then((data) => {
         this.item = data;
+        this.item.itemNotBooked = false;
+        if (this.item.applicants.indexOf(this.currentUser._id)===-1) {
+          this.item.itemNotBooked=true;
+        } 
       })
       .catch(err => {
         console.log(err);
@@ -42,7 +44,7 @@ export class ItemDetailPageComponent implements OnInit {
   handleDeleteClick(){
     this.itemService.deleteOne(this.idItem)
     .then(()=>{
-      this.router.navigate(['/']);
+      this.router.navigate(['profile/',this.item.owner]);
     })
     .catch(err => {
       console.log(err);
@@ -53,11 +55,19 @@ export class ItemDetailPageComponent implements OnInit {
     this.requestError = '';
     this.itemService.requestItem(this.idItem)
     .then(()=>{
-      this.router.navigate(['/']);
+     this.router.navigate(['profile/',this.currentUser._id]);
     })
     .catch(err => {
-      this.requestError = err.error.code || 'unexpected';
+      this.requestError = err.error || 'unexpected';
     })
   }
-
+  handleReviewClick(id){
+    this.itemService.deleteOne(id)
+    .then(()=>{
+      this.router.navigate(['profile/',this.item.owner,'reviews']);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
 }

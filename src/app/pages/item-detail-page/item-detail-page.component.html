@@ -22,7 +22,9 @@
                 <a [routerLink]="['/profile',item.owner]" class="owner">Owner</a>
               <!-- if the item is not sold -->
                 <div *ngIf="!item.sold">
+                  <ng-container *ngIf="item.itemNotBooked">
                   <button class="btn" (click)="handleRequestClick()">Book Item</button>
+                </ng-container>
                   <div class="error" *ngIf="requestError">
                     <ng-container [ngSwitch]="requestError">
                       <p *ngSwitchCase="'not-found'">The item is no longer available</p>
@@ -32,7 +34,7 @@
                 </div>
                   <!-- if the item issold -->
                 <div *ngIf="item.sold">
-                    <a [routerLink]="['/profile',item.owner,'reviews']">Review</a>
+                    <a (click)="handleReviewClick(item._id)">Review</a>
                 </div>
               </div>
         </div>

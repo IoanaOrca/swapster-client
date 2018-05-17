@@ -32,6 +32,14 @@ export class UserService {
     return this.httpClient.get(`${this.baseUrl}/users/${id}/requests`, options)
       .toPromise()
   }
+
+  getItemsWichAccepted(id){
+    const options = {
+      withCredentials: true
+    };
+    return this.httpClient.get(`${this.baseUrl}/users/${id}/itemsReceived`, options)
+      .toPromise()
+  } 
 }
 
 

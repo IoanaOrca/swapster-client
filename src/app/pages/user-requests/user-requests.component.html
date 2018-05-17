@@ -1,17 +1,19 @@
-<ul *ngFor="let item of items">
-
-
-  <ul *ngFor="let user of item.applicants">
-      <ng-container *ngIf="!user">
-          Loading...
-      </ng-container>
-      <ng-container *ngIf="user">
-      <li>
-          <h3>{{user.name}}</h3>
-          <p>{{item.title}}</p>
-          <button (click)="handleAcceptClick(item)">Accept</button>
-      </li>
-      </ng-container>
-  </ul>
-
+<ul  class="reviews-container container">
+    <li *ngFor="let item of items">
+        <ul class="last-child">
+            <ng-container *ngIf="!item.applicants">
+                Loading...
+            </ng-container>
+            <ng-container *ngIf="item.applicants" >
+            <li *ngFor="let user of item.applicants" class="reviews-list">
+                <a [routerLink]="['/profile',user._id]"><h3>{{user.username}}</h3></a>
+                <hr/>
+                <!-- <h3>{{item.title}}</h3> -->
+                <img src={{item.image}} >
+                <hr/>
+                <button (click)="handleAcceptClick(item)">Accept</button>
+            </li>
+            </ng-container>
+        </ul>
+    </li>
 </ul>

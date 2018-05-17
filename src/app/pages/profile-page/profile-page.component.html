@@ -7,11 +7,12 @@
         <div *ngIf="user._id !== currentUser._id">
            <h3>{{user.username}}</h3>
         </div>
-        <!-- case user is current user -->
+        <!-- list items case user is current user -->
         <div *ngIf="user._id === currentUser._id">
                 <a [routerLink]="['/items/add']">Add Item</a>
                 <a [routerLink]="['/profile',user._id,'requests']">Requests</a>
         </div>
+        <!-- list items owned -->
         <ng-container *ngIf="!items" >
                 Loading...
         </ng-container>
@@ -26,16 +27,44 @@
                 </ul>   
             </div> 
         </ng-container>
-        <!-- case user is not current user -->
-        <div *ngIf="user._id !== currentUser._id">
-            <hr/>
-            <ul class="reviews">
-                <li *ngFor="let review of user.reviews">
+         <!-- list items that I've booked -->
+        <ng-container *ngIf="user._id === currentUser._id">
+            <ng-container *ngIf="itemsBooked.length">
+                <h3>Booked items</h3>
+                <div  class="items-list">
+                    <ul>
+                        <li *ngFor="let item of itemsBooked">
+                            <a [routerLink]="['/items',item._id]">
+                                <app-item-card [item]="item"></app-item-card>
+                            </a>
+                        </li>
+                    </ul>   
+                </div> 
+            </ng-container>
+            <!-- list items that got accepted -->
+            <ng-container *ngIf="itemsReceived.length">
+                <h3>These items are yours now!</h3>
+                <div  class="items-list">
+                    <ul>
+                        <li *ngFor="let item of itemsReceived">
+                            <a [routerLink]="['/items',item._id]">
+                                <app-item-card [item]="item"></app-item-card>
+                            </a>
+                        </li>
+                    </ul>   
+                </div> 
+            </ng-container>
+        </ng-container> 
+        <!-- list items case user is not current user -->
+            <div *ngIf="user._id !== currentUser._id">
+                <hr/>
+                <ul class="reviews">
+                    <li *ngFor="let review of user.reviews">
 
-                <h3><i class="fas fa-star"></i> {{review.rating}}</h3>
-                <p>{{review.description}}</p>    
-                </li>
-            </ul>
-        </div>
-    </ng-container>
+                    <h3><i class="fas fa-star"></i> {{review.rating}}</h3>
+                    <p>{{review.description}}</p>    
+                    </li>
+                </ul>
+            </div>
+        </ng-container>   
 </div>

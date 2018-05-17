@@ -296,3 +296,40 @@ form button:hover {
   min-width:47%;
   min-height:35px;
 }
+ /* reviews page*/
+ .reviews-container {
+   background-color: 	#FAFBED;
+   margin-top:10vh;
+ }
+ .reviews-container img{
+   width:100px;
+   border:4px solid white;
+   border-radius: 5px;
+   margin: 0 20px;
+ }
+ .reviews-container hr{
+   width:60%;
+ }
+ .reviews-list{
+   display: flex;
+   align-items: center;
+  justify-content: space-between;
+  padding:20px;
+  margin-bottom:20px;
+ }
+
+ .reviews-list a{
+   color:#F5907C;
+   border:none;
+   background-color: #FAFBED;
+ }
+
+ .reviews-list a:hover{
+  color:#F5907C;
+  border:none;
+  background-color: #FAFBED;
+}
+
+.reviews-container hr{
+  width:80%;
+}

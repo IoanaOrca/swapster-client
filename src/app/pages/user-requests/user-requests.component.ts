@@ -3,8 +3,6 @@ import { ItemService } from '../../services/items.service';
 import { UserService } from '../../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-user-requests',
   templateUrl: './user-requests.component.html',
@@ -13,8 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class UserRequestsComponent implements OnInit {
 
   requestError:String;
-  idItem: String;
   items: any;
+  id:String;
 
 
   constructor( private itemService: ItemService,
@@ -33,15 +31,14 @@ export class UserRequestsComponent implements OnInit {
        console.log(err);
       });
     })
-
   }
 
   handleAcceptClick(item){
     // item.sold=true;
     this.requestError = '';
-    this.itemService.sellItem(this.idItem)
+    this.itemService.sellItem(item._id)
     .then(()=>{
-      this.router.navigate(['/']);
+      this.router.navigate(['profile/',item.owner]);
     })
     .catch(err => {
       this.requestError = err.error.code || 'unexpected';
