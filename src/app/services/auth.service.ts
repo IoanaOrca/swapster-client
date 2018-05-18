@@ -11,6 +11,7 @@ export class AuthService {
   private user: any;
   private userChange: Subject<any> = new Subject();
 
+  // private API_URL = environment.apiUrl + '/auth;
   private API_URL = 'http://localhost:3000/auth';
 
   userChange$: Observable<any> = this.userChange.asObservable();

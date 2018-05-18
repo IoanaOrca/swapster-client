@@ -5,10 +5,11 @@
     <ng-container *ngIf="user" >
         <!-- case user is not urrent user -->
         <div *ngIf="user._id !== currentUser._id">
-           <h3>{{user.username}}</h3>
+           <h3>{{user.username}}'s items</h3>
         </div>
         <!-- list items case user is current user -->
         <div *ngIf="user._id === currentUser._id">
+                <h3>My items!</h3>
                 <a [routerLink]="['/items/add']">Add Item</a>
                 <a [routerLink]="['/profile',user._id,'requests']">Requests</a>
         </div>
